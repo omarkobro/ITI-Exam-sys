@@ -1,1 +1,10 @@
-// Login And Sign Up Logic
+function openLogin() {
+    if (!isLoggedIn()) {
+        window.location.href = ROUTES.LOGIN;
+    }
+}
+function openRegister() {
+    if (!isLoggedIn()) {
+        window.location.href = ROUTES.SIGNUP;
+    }
+}

@@ -1,16 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/tailwind.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    <title>Home</title>
-  </head>
-  <body>
-    
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/tailwind.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="/CSS/homepage.css">
+  <link rel="stylesheet" href="/CSS/animatedbg.css">
+  <title>SkillCheck | Home</title>
+  <script src="JS/constants.js"></script>
+  <script src="JS/storage.js"></script>
+  <script src="JS/auth.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="homepage-logo">
+      <img src="/assets/homepage/logo.png" alt="logo">
+    </div>
+    <div class="nav-items">
+      <ul>
+        <li><a href="">About</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <header class="homepage-header">
+    <div class="homepage-header-content">
+      <div class="system-online">
+        <div class="greendot"></div>
+        SYSTEM ONLINE
+      </div>
+      <div class="homepage-header-title">Master your <span>examinations.</span></div>
+      <div class="homepage-header-para">A seamless, secure, and intelligent platform designed for the modern assessment
+        experience. Simplicity meets performance.</div>
+      <div class="homepage-header-buttons">
+        <div id="loginButton" class="loginButton" onclick="openLogin()">Login</div>
+        <div id="RegisterButton" class="RegisterButton" onclick="openRegister()">Register</div>
+      </div>
+      <div class="homepage-header-buttons">
+        <div id="StartExamButton" class="StartExamButton" onclick="openExamPreview()">Start Exam</div>
+        <div id="logoutButton" class="logoutButton" onclick="logout()">logout</div>
+      </div>
+
+
+
+      <div class="homepage-header-small-cards">
+        <div class="small-card-icons">
+          <i class="fa-solid fa-lg fa-shield"></i>
+          <div class="small-icons-text">Secure</div>
+        </div>
+
+        <div class="small-card-icons">
+          <i class="fa-solid fa-lg fa-gauge"></i>
+          <div class="small-icons-text">Fast</div>
+        </div>
+        <div class="small-card-icons">
+          <i class="fa-solid fa-lg fa-mobile-screen-button"></i>
+          <div class="small-icons-text">Mobile</div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <footer>
+    <p>&copy; Examination System Project, All right reserved</p>
+  </footer>
+  <script>
+    if (isLoggedIn()) {
+      document.getElementById("loginButton").style.display = "none";
+      document.getElementById("RegisterButton").style.display = "none";
+    }
+    else {
+      document.getElementById("StartExamButton").style.display = "none";
+      document.getElementById("logoutButton").style.display = "none";
+    }
+  </script>
+</body>
+
 </html>
