@@ -48,7 +48,8 @@ body {
   transition: 0.5s all ease;
 }
 .login-formlogo:hover{
-   filter: brightness(1.1);
+   filter: brightness(1.3);
+   transform: scaleX(0.9);
 }
 
 .login-formtitle {
