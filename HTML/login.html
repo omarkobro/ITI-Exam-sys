@@ -8,6 +8,8 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <title>SkillCheck | Login</title>
+  <link rel="stylesheet" href="/CSS/login.css">
+  <link rel="stylesheet" href="/CSS/animatedbg.css">
   <script src="JS/constants.js"></script>
   <script src="JS/storage.js"></script>
   <script>
@@ -15,8 +17,30 @@
       window.location.href = ROUTES.INDEX;
     }
   </script>
+  <script src="JS/auth.js"></script>
 </head>
 
-<body></body>
+<body>
+  <div class="login-formcard">
+    <div class="login-formlogo"><img src="/assets/homepage/logo.png" alt="logo"></div>
+
+    <div class="login-formtitle">Welcome back</div>
+
+    <div class="login-formpara">sign in to access your examination portal</div>
+
+    <form class="login-form-card-inputs">
+      <label for="login-email">Email Address</label>
+      <input type="email" name="user-email" id="login-email" placeholder="student@example.com" required>
+      <p class="emailErrorMsg"></p>
+
+      <label for="login-password">Password</label>
+      <input type="password" name="user-password" id="login-password" placeholder="Enter your password">
+      <p class="passwordErrorMsg"></p>
+      <button>Sign in</button>
+      <div class="donothaveaccount">don't have an account? <a href="/HTML/signUp.html">Register</a></div>
+    </form>
+
+  </div>
+</body>
 
 </html>

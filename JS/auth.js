@@ -8,3 +8,4 @@ function openRegister() {
         window.location.href = ROUTES.SIGNUP;
     }
 }
+

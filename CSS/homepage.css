@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('/assets/Roboto-VariableFont_wdth\,wght.ttf') format('truetype'); /* Path to your font file */
+}
+body {
+  font-family: Roboto;
+  margin: 0;
+}
 :root {
   --primary: #f59e0b;
   --primary-hover: #d97706;
