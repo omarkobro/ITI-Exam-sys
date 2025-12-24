@@ -10,19 +10,23 @@
   <title>SkillCheck | Login</title>
   <link rel="stylesheet" href="/CSS/login.css">
   <link rel="stylesheet" href="/CSS/animatedbg.css">
-  <script src="JS/constants.js"></script>
-  <script src="JS/storage.js"></script>
-  <script>
+  <script src="../JS/constants.js"></script>
+  <script src="../JS/storage.js"></script>
+  <script src="../JS/utils.js"></script>
+  <script src="../JS/login.js"></script>
+
+
+  <script defer>
     if (isLoggedIn()) {
       window.location.href = ROUTES.INDEX;
     }
   </script>
-  <script src="JS/auth.js"></script>
+  <script src="../JS/auth.js"></script>
 </head>
 
 <body>
   <div class="login-formcard">
-    <div class="login-formlogo"><img src="/assets/homepage/logo.png" alt="logo"></div>
+    <div class="login-formlogo" onclick="openHome('../index.html')"><img src="/assets/homepage/logo.png" alt="logo"></div>
 
     <div class="login-formtitle">Welcome back</div>
 

@@ -4,12 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/tailwind.css" />
+  <link rel="stylesheet" href="/CSS/tailwind.css" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <title>Sign Up</title>
-  <script src="JS/constants.js"></script>
-  <script src="JS/storage.js"></script>
+  <title>SkillCheck | Register</title>
+  <link rel="stylesheet" href="../CSS/navbar.css" />
+  <link rel="stylesheet" href="../CSS/signuppage.css" />
+  <link rel="stylesheet" href="../CSS/animatedbg.css" />
+  <script src="../JS/constants.js"></script>
+  <script src="../JS/storage.js"></script>
+  <script src="../JS/utils.js"></script>
+  <script src="../JS/login.js"></script>
   <script>
     if (isLoggedIn()) {
       window.location.href = ROUTES.INDEX;
@@ -17,6 +22,67 @@
   </script>
 </head>
 
-<body></body>
+<body>
+  <nav>
+    <div class="homepage-logo" onclick="openHome('../index.html')">
+      <img src="/assets/homepage/logo.png" alt="logo" />
+    </div>
+
+    <div class="nav-items">
+      <div class="signup-nav-text">
+        Already have an account?
+        <a href="/HTML/login.html">Login</a>
+      </div>
+    </div>
+  </nav>
+  <section class="register-page">
+
+    <div class="resigter-page-text">
+      <div class="signup-page-text-bar"></div>
+      <div class="resigter-page-text-title">Start your <div class="resigter-page-text-title-spanned">learning journey
+        </div> today</div>
+      <p>Join thousands of students in our comprehensive examination system. Track your progress, mark questions for
+        review, and achieve your certification goals.</p>
+
+    </div>
+    <div class="resigter-page-form">
+      <div class="signup-formtitle">Welcome back</div>
+      <div class="signup-formpara">sign in to access your examination portal</div>
+
+      <form class="signup-form-card-inputs">
+        <div class="signup-username">
+          <div>
+            <label for="signup-fname">Firstname</label>
+            <input type="text" name="user-fname" id="signup-fname" placeholder="Your First Name" required>
+            <p class="fnameErrorMsg"></p>
+          </div>
+
+          <div>
+            <label for="signup-lname">Lastname</label>
+            <input type="text" name="user-lname" id="signup-lname" placeholder="Your Last Name" required>
+            <p class="lnameErrorMsg"></p>
+          </div>
+        </div>
+
+        <label for="signup-email">Email Address</label>
+        <input type="email" name="user-email" id="signup-email" placeholder="student@example.com" required>
+        <p class="emailErrorMsg"></p>
+
+        <label for="signup-password">Password</label>
+        <input type="password" name="user-password" id="signup-password" placeholder="Enter your password">
+        <p class="passwordErrorMsg"></p>
+
+        <label for="signup-re-password">RE-Enter Password</label>
+        <input type="password" name="user-re-password" id="signup-re-password" placeholder="Enter your password again">
+        <p class="passwordErrorMsg"></p>
+
+        <button>Create Account</button>
+      </form>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; Examination System Project, All right reserved</p>
+  </footer>
+</body>
 
 </html>
