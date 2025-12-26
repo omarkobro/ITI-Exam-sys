@@ -75,7 +75,8 @@ function validateRePassword() {
 function submitRegisterForm(e) {
     e.preventDefault();
     var user = {
-        name: fname.value.trim() + " " + lname.value.trim(),
+        firstName: fname.value.trim(),
+        lastName: lname.value.trim(),
         email: email.value,
         password: passwordInput.value
     }

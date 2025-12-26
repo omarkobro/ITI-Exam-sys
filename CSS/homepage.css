@@ -264,3 +264,11 @@ footer {
     gap: 10%;
   }
 }
+
+#welcome-user{
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
