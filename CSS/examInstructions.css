@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("/assets/Roboto-VariableFont_wdth\,wght.ttf") format("truetype"); /* Path to your font file */
+}
+body {
+  font-family: Roboto;
+  margin: 0;
+}
+footer {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light-text-color);
+  font-size: 1rem;
+}
+.instructionsBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.instructionsBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(30px, 4vw, 50px);
+  padding: clamp(30px, 4vw, 50px);
+}
+
+.instructions-header-title {
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.instructions-header-para {
+  text-align: center;
+  color: var(--light-text-color);
+  max-width: 520px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+.instructions-body-card {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px);
+  box-shadow: 1px 3px 12px 0px #00000039;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(30px, 4vw, 40px);
+}
+.instructiongrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(5px, 3vw, 20px);
+}
+.instructiongrid p {
+  color: var(--light-text-color);
+}
+.instructiongrid h4 span {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #f59e0b;
+}
+.instructiongrid h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.StartExamButton {
+  background-color: var(--accent-green);
+  text-align: center;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 15px;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2));
+  transition: 0.5s all ease;
+  cursor: pointer;
+  width: max-content;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.StartExamButton:hover {
+  filter: drop-shadow(2px 2px 30px #f59f0b4e);
+  transform: scale(1.1);
+}

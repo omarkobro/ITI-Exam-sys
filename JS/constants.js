@@ -25,7 +25,7 @@ var ROUTES = {
   INDEX: 'index.html',
   SIGNUP: '/HTML/signUp.html',
   LOGIN: '/HTML/login.html',
-  INSTRUCTIONS: 'examInstruction.html',
+  INSTRUCTIONS: '/HTML/examInstruction.html',
   EXAM: 'exam.html',
   RESULT: 'result.html',
   TIMEOUT: 'timeOut.html',

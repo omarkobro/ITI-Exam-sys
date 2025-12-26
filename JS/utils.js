@@ -8,9 +8,13 @@ function openRegister() {
         window.location.href = ROUTES.SIGNUP;
     }
 }
-function openExamInstructions() {
+function openExamPreview() {
     if (!isLoggedIn()) {
-        window.location.href = ROUTES.SIGNUP;
+        window.location.href = ROUTES.LOGIN;
+    }
+    else
+    {
+        window.location.href = ROUTES.INSTRUCTIONS;
     }
 }
 
@@ -23,7 +27,7 @@ function manageHomepageItemVisibility() {
         var user = getUser();
         document.getElementById("loginButton").style.display = "none";
         document.getElementById("RegisterButton").style.display = "none";
-        document.getElementById("welcome-user").textContent = `Welcome back, ${user.firstName}`
+        document.getElementById("welcome-user").innerHTML = `Welcome back, <span class="welcomeUserName">${user.firstName}</span>`
     }
     else {
         document.getElementById("StartExamButton").style.display = "none";

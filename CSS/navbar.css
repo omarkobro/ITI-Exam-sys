@@ -51,3 +51,8 @@ nav {
 .nav-items a:hover {
   color: var(--primary-hover);
 }
+
+#navbar-username
+{
+  color: var(--light-text-color);
+}

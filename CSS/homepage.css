@@ -99,10 +99,18 @@ nav {
   aspect-ratio: 1;
 }
 .homepage-header-title {
-  font-weight: 700;
-  font-size: 4rem;
+  font-weight: 600;
+  font-size: clamp(3rem, 6vw, 4rem);
   text-align: center;
-  line-height: 1;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.homepage-header-para {
+  text-align: center;
+  color: var(--light-text-color);
+  max-width: 550px;
+  line-height: 1.6;
 }
 .homepage-header-title span {
   display: block;
@@ -128,11 +136,6 @@ nav {
   }
 }
 
-.homepage-header-para {
-  text-align: center;
-  color: var(--light-text-color);
-  width: 45%;
-}
 .homepage-header-buttons {
   display: flex;
   gap: 1vw;
@@ -216,7 +219,7 @@ nav {
   background-color: rgba(255, 255, 255, 1);
   font-weight: 900;
 }
-.small-card-icons:hover i{
+.small-card-icons:hover i {
   font-size: 2rem;
 }
 .small-card-icons i {
@@ -249,26 +252,21 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
-  .homepage-header-title {
-    font-weight: 700;
-    font-size: 3em;
-    text-align: center;
-    line-height: 1;
-  }
-  .homepage-header-para {
-    text-align: center;
-    color: var(--light-text-color);
-    width: 80%;
-  }
-  .homepage-header-small-cards{
+
+  .homepage-header-small-cards {
     gap: 10%;
   }
 }
 
-#welcome-user{
-  font-size: 1.8rem;
-  font-weight: 900;
+#welcome-user {
+  /* font-size: 1.4rem; */
+  /* font-size: 1.6rem; */
+  font-size: clamp(1.4em, 4vw, 1.8em);
   text-align: center;
   padding: 0;
   margin: 0;
+}
+#welcome-user .welcomeUserName {
+  font-weight: 900;
+  text-transform: capitalize;
 }
