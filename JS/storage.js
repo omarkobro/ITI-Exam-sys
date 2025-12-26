@@ -37,7 +37,17 @@ function isLoggedIn() {
 
 function logout() {
   localStorage.removeItem(STORAGE_KEYS.IS_LOGGED_IN);
+  location.reload();
 }
+
+function completeRegistration(user) {
+  saveUser(user);
+  setRegistered();
+  localStorage.setItem(STORAGE_KEYS.IS_LOGGED_IN, "false");
+  location.reload();
+}
+
+
 
 
 /* ==============================

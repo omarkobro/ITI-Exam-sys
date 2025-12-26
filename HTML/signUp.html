@@ -8,16 +8,21 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <title>SkillCheck | Register</title>
+  <!-- styles -->
   <link rel="stylesheet" href="../CSS/navbar.css" />
   <link rel="stylesheet" href="../CSS/signuppage.css" />
   <link rel="stylesheet" href="../CSS/animatedbg.css" />
+  <!-- scripts -->
   <script src="../JS/constants.js"></script>
   <script src="../JS/storage.js"></script>
   <script src="../JS/utils.js"></script>
-  <script src="../JS/login.js"></script>
+  <script src="../JS/signup.js" defer></script>
   <script>
     if (isLoggedIn()) {
-      window.location.href = ROUTES.INDEX;
+      window.location.replace(ROUTES.INDEX);
+    }
+    if (isRegistered()) {
+      window.location.replace(ROUTES.LOGIN);
     }
   </script>
 </head>
@@ -49,32 +54,37 @@
       <div class="signup-formtitle">Welcome back</div>
       <div class="signup-formpara">sign in to access your examination portal</div>
 
-      <form class="signup-form-card-inputs">
+      <form class="signup-form-card-inputs" onsubmit="submitRegisterForm(event)">
         <div class="signup-username">
           <div>
             <label for="signup-fname">Firstname</label>
-            <input type="text" name="user-fname" id="signup-fname" placeholder="Your First Name" required>
-            <p class="fnameErrorMsg"></p>
+            <input onblur="validateFname()" type="text" name="user-fname" id="signup-fname"
+              placeholder="Your First Name" required>
+            <p class="fnameErrorMsg" id="signup-fname-msg"></p>
           </div>
 
           <div>
             <label for="signup-lname">Lastname</label>
-            <input type="text" name="user-lname" id="signup-lname" placeholder="Your Last Name" required>
-            <p class="lnameErrorMsg"></p>
+            <input onblur="validateLname()" type="text" name="user-lname" id="signup-lname" placeholder="Your Last Name"
+              required>
+            <p class="lnameErrorMsg" id="signup-lname-msg"></p>
           </div>
         </div>
 
         <label for="signup-email">Email Address</label>
-        <input type="email" name="user-email" id="signup-email" placeholder="student@example.com" required>
-        <p class="emailErrorMsg"></p>
+        <input onblur="validateEmail()" type="email" name="user-email" id="signup-email"
+          placeholder="student@example.com" required>
+        <p class="emailErrorMsg" id="signup-email-msg"></p>
 
         <label for="signup-password">Password</label>
-        <input type="password" name="user-password" id="signup-password" placeholder="Enter your password">
-        <p class="passwordErrorMsg"></p>
+        <input onblur="validatePassword()" type="password" name="user-password" id="signup-password"
+          placeholder="Enter your password">
+        <p class="passwordErrorMsg" id="signup-password-msg"></p>
 
         <label for="signup-re-password">RE-Enter Password</label>
-        <input type="password" name="user-re-password" id="signup-re-password" placeholder="Enter your password again">
-        <p class="passwordErrorMsg"></p>
+        <input onblur="validateRePassword()" type="password" name="user-re-password" id="signup-re-password"
+          placeholder="Enter your password again">
+        <p class="passwordErrorMsg" id="signup-re-password-msg"></p>
 
         <button>Create Account</button>
       </form>
