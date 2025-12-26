@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/CSS/homepage.css">
   <link rel="stylesheet" href="/CSS/animatedbg.css">
   <link rel="stylesheet" href="/CSS/navbar.css">
+  <link rel="stylesheet" href="/CSS/LotttieAnimation.css" />
   <title>SkillCheck | Home</title>
   <script src="JS/constants.js"></script>
   <script src="JS/storage.js"></script>
@@ -17,6 +18,10 @@
 </head>
 
 <body>
+    <div id="page-loader">
+    <lottie-player src="/assets/loading.json" background="transparent" speed="1" loop autoplay>
+    </lottie-player>
+  </div>
   <nav>
     <div class="homepage-logo">
       <img src="/assets/homepage/logo.png" alt="logo">
@@ -68,6 +73,8 @@
   <footer>
     <p>&copy; Examination System Project, All right reserved</p>
   </footer>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="JS/lottieAnimation.js"></script>
   <script>
     manageHomepageItemVisibility();
   </script>
