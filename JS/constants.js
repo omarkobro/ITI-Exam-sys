@@ -22,7 +22,7 @@ var EXAM_CONFIG = {
    ============================== */
 
 var ROUTES = {
-  INDEX: 'index.html',
+  INDEX: '../index.html',
   SIGNUP: 'signUp.html',
   LOGIN: 'login.html',
   INSTRUCTIONS: 'examInstruction.html',

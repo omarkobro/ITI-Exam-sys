@@ -3,10 +3,7 @@
    ============================== */
 
 function saveUser(user) {
-  localStorage.setItem(
-    STORAGE_KEYS.USER,
-    JSON.stringify(user)
-  );
+  localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
 }
 
 function getUser() {
@@ -14,41 +11,33 @@ function getUser() {
   return user ? JSON.parse(user) : null;
 }
 
-
 /* ==============================
    AUTH FLAGS
    ============================== */
 
 function setRegistered() {
-  localStorage.setItem(STORAGE_KEYS.IS_REGISTERED, "true");
+  localStorage.setItem(STORAGE_KEYS.IS_REGISTERED, 'true');
 }
 
 function isRegistered() {
-  return localStorage.getItem(STORAGE_KEYS.IS_REGISTERED) === "true";
+  return localStorage.getItem(STORAGE_KEYS.IS_REGISTERED) === 'true';
 }
 
 function setLoggedIn() {
-  localStorage.setItem(STORAGE_KEYS.IS_LOGGED_IN, "true");
+  localStorage.setItem(STORAGE_KEYS.IS_LOGGED_IN, 'true');
 }
 
 function isLoggedIn() {
-  return localStorage.getItem(STORAGE_KEYS.IS_LOGGED_IN) === "true";
+  return localStorage.getItem(STORAGE_KEYS.IS_LOGGED_IN) === 'true';
 }
 
 function logout() {
   localStorage.removeItem(STORAGE_KEYS.IS_LOGGED_IN);
 }
 
-
-/* ==============================
-   EXAM STATE STORAGE
-   ============================== */
-
+//save exam state
 function saveExamState(examState) {
-  localStorage.setItem(
-    STORAGE_KEYS.EXAM_STATE,
-    JSON.stringify(examState)
-  );
+  localStorage.setItem(STORAGE_KEYS.EXAM_STATE, JSON.stringify(examState));
 }
 
 function getExamState() {
@@ -61,15 +50,22 @@ function clearExamState() {
 }
 
 
-/* ==============================
-   EXAM RESULT STORAGE
-   ============================== */
+//save last exam result
+function saveLastExamResult(score) {
+  var user = getUser();
 
-function saveLastResult(result) {
-  localStorage.setItem(
-    STORAGE_KEYS.LAST_SCORE,
-    JSON.stringify(result)
-  );
+  var timeTakenSeconds = EXAM_CONFIG.DURATION_SECONDS - getRemainingTime();
+  var timeTakenMinutes = Math.floor(timeTakenSeconds / 60);
+  var result = {
+    name: user.name,
+    score: score,
+    total: examState.questions.length,
+    date: new Date().toLocaleString(),
+    timeTaken: timeTakenMinutes,
+  };
+  console.log(result);
+
+  localStorage.setItem(STORAGE_KEYS.LAST_SCORE, JSON.stringify(result));
 }
 
 function getLastResult() {
