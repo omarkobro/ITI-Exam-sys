@@ -5,6 +5,7 @@ var examState = {
   marked: [],
   isSubmitted: false,
   score: 0,
+  startTime: null,
 };
 
 // intialize the exam
@@ -16,6 +17,8 @@ function initExamState(shuffledQuesstions) {
   examState.marked = [];
   examState.isSubmitted = false;
   examState.score = 0;
+  examState.startTime = null;
+  return examState
 }
 
 // get the currrent question index
@@ -92,7 +95,6 @@ function markQuestionToggler(questionId) {
     // console.log('test from the true case in toggler');
 
     // console.log(examState.marked);
-
   } else {
     // console.log('test from the false case in toggler');
 

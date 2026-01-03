@@ -3,13 +3,143 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/tailwind.css" />
+    <link rel="stylesheet" href="/CSS/tailwind.css" />
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
-    <title>Sign Up</title>
+    <title>SkillCheck | Register</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="../CSS/navbar.css" />
+    <link rel="stylesheet" href="../CSS/signuppage.css" />
+    <link rel="stylesheet" href="../CSS/animatedbg.css" />
+    <!-- scripts -->
+    <script src="../JS/constants.js"></script>
+    <script src="../JS/storage.js"></script>
+    <script src="../JS/utils.js"></script>
+    <script src="../JS/signup.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.17/dist/sweetalert2.all.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.17/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      if (isLoggedIn()) {
+        window.location.replace(ROUTES.INDEX);
+      }
+      if (isRegistered()) {
+        window.location.replace(ROUTES.LOGIN);
+      }
+
+      if (sessionStorage.getItem('examStarted') == 'true') {
+        window.location.replace('exam.html');
+      }
+    </script>
   </head>
-  <body></body>
+
+  <body>
+    <nav>
+      <div class="homepage-logo" onclick="openHome('../index.html')">
+        <img src="/assets/homepage/logo.png" alt="logo" />
+      </div>
+
+      <div class="nav-items">
+        <div class="signup-nav-text">
+          Already have an account?
+          <a href="/HTML/login.html">Login</a>
+        </div>
+      </div>
+    </nav>
+    <section class="register-page">
+      <div class="resigter-page-text">
+        <div class="signup-page-text-bar"></div>
+        <div class="resigter-page-text-title">
+          Start your
+          <div class="resigter-page-text-title-spanned">learning journey</div>
+          today
+        </div>
+        <p>
+          Join thousands of students in our comprehensive examination system.
+          Track your progress, mark questions for review, and achieve your
+          certification goals.
+        </p>
+      </div>
+      <div class="resigter-page-form">
+        <div class="signup-formtitle">Welcome back</div>
+        <div class="signup-formpara">
+          sign in to access your examination portal
+        </div>
+
+        <form
+          class="signup-form-card-inputs"
+          onsubmit="submitRegisterForm(event)"
+        >
+          <div class="signup-username">
+            <div>
+              <label for="signup-fname">First Name</label>
+              <input
+                onblur="validateFname()"
+                type="text"
+                name="user-fname"
+                id="signup-fname"
+                placeholder="Your First Name"
+                required
+              />
+              <p class="fnameErrorMsg" id="signup-fname-msg"></p>
+            </div>
+
+            <div>
+              <label for="signup-lname">Last Name</label>
+              <input
+                onblur="validateLname()"
+                type="text"
+                name="user-lname"
+                id="signup-lname"
+                placeholder="Your Last Name"
+                required
+              />
+              <p class="lnameErrorMsg" id="signup-lname-msg"></p>
+            </div>
+          </div>
+
+          <label for="signup-email">Email Address</label>
+          <input
+            onblur="validateEmail()"
+            type="email"
+            name="user-email"
+            id="signup-email"
+            placeholder="student@example.com"
+            required
+          />
+          <p class="emailErrorMsg" id="signup-email-msg"></p>
+
+          <label for="signup-password">Password</label>
+          <input
+            onblur="validatePassword()"
+            type="password"
+            name="user-password"
+            id="signup-password"
+            placeholder="Enter your password"
+          />
+          <p class="passwordErrorMsg" id="signup-password-msg"></p>
+
+          <label for="signup-re-password">RE-Enter Password</label>
+          <input
+            onblur="validateRePassword()"
+            type="password"
+            name="user-re-password"
+            id="signup-re-password"
+            placeholder="Enter your password again"
+          />
+          <p class="passwordErrorMsg" id="signup-re-password-msg"></p>
+
+          <button>Create Account</button>
+        </form>
+      </div>
+    </section>
+    <footer>
+      <p>&copy; Examination System Project, All right reserved</p>
+    </footer>
+  </body>
 </html>

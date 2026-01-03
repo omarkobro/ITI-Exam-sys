@@ -23,10 +23,9 @@ var EXAM_CONFIG = {
 
 var ROUTES = {
   INDEX: '../index.html',
-  SIGNUP: 'signUp.html',
-  LOGIN: 'login.html',
-  INSTRUCTIONS: 'examInstruction.html',
+  SIGNUP: '/HTML/signUp.html',
+  LOGIN: '/HTML/login.html',
+  INSTRUCTIONS: '/HTML/examInstruction.html',
   EXAM: 'exam.html',
   RESULT: 'result.html',
-  TIMEOUT: 'timeOut.html',
 };

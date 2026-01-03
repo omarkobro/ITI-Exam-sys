@@ -1,28 +1,67 @@
-function initExam() {
+//auto-init exam
+window.onload = function () {
+  var savedState = getExamState();
+
+  if (savedState && !savedState.isSubmitted) {
+    restoreExam(savedState);
+  } else {
+    startNewExam();
+  }
+  // initExam();
+};
+
+function startNewExam() {
+  sessionStorage.setItem('examStarted', 'true');
+
   //check the user state
   var user = getUser();
-
   if (!user) {
     window.location.href = ROUTES.LOGIN;
     return;
   }
+
   // init questions
   var qeustionsCopy = QUESTIONS_BANK.slice();
   var shuffledQuesstions = shuffleArray(qeustionsCopy);
 
   // init exam state
-  initExamState(shuffledQuesstions);
+  var state = initExamState(shuffledQuesstions);
+
+  state.startTime = Date.now();
+  saveExamState(state);
+
+  initExam(EXAM_CONFIG.DURATION_SECONDS);
+}
+
+//restore exam
+function restoreExam(savedState) {
+  examState = savedState;
+  sessionStorage.setItem('examStarted', 'true');
+
+  // Calculate elapsed time and remaining
+  var elapsedMs = Date.now() - examState.startTime;
+  var elapsedSeconds = Math.floor(elapsedMs / 1000);
+  var remainingTime = EXAM_CONFIG.DURATION_SECONDS - elapsedSeconds;
+
+  if (remainingTime <= 0) {
+    handleExamTimeOut();
+    return;
+  }
+  initExam(remainingTime);
+}
+
+function initExam(initialRemaining = EXAM_CONFIG.DURATION_SECONDS) {
   var currentQuestion = getCurrentQuestion();
 
-  //render qeustion
   renderQuestion(currentQuestion);
-
   renderAnswers(currentQuestion);
-
   updateNavigationButtons();
-
+  renderMarkedQuestionsList();
+  updateProgressBar();
+  updateMarkButton();
   //start exam timer
   startExamTimer(
+    initialRemaining,
     function (remainingSeconds) {
       updateTimerDisplay(remainingSeconds);
     },
@@ -32,47 +71,6 @@ function initExam() {
   );
 
   handleExamEvents();
-}
-
-///Handle Exam TIME OUT
-function handleExamTimeOut() {
-  if (examState.isSubmitted) {
-    return;
-  }
-
-  examState.isSubmitted = true;
-  stopExamTimer();
-  examState.score = calcScore();
-
-  saveLastExamResult(examState.score);
-
-  window.location.href = ROUTES.TIMEOUT;
-}
-
-//auto-init exam
-window.onload = function () {
-  initExam();
-};
-
-// submit exam
-function submitExam() {
-  if (examState.isSubmitted) {
-    return;
-  }
-
-  var confirmSubmit = confirm('Are you sure you want to submit the exam?');
-  if (!confirmSubmit) {
-    return;
-  }
-
-  examState.isSubmitted = true;
-  stopExamTimer();
-  examState.score = calcScore();
-
-
-  saveLastExamResult(examState.score);
-
-  window.location.href = ROUTES.RESULT;
 }
 
 //////Exam Events
@@ -87,6 +85,7 @@ function handleExamEvents() {
       var question = getCurrentQuestion();
       selectAnswer(question.id, parseInt(e.target.value));
       updateProgressBar();
+      saveExamState(examState);
     }
   });
 
@@ -96,6 +95,7 @@ function handleExamEvents() {
   nextBtn.addEventListener('click', function () {
     goToNextQuestion();
     renderCurrentQuestion();
+    saveExamState(examState);
   });
 
   // previous button
@@ -103,11 +103,11 @@ function handleExamEvents() {
   prevBtn.addEventListener('click', function () {
     goToPrevQuestion();
     renderCurrentQuestion();
+    saveExamState(examState);
   });
 
   /// handle mark for reveiw
   var markBtn = document.getElementById('mark-btn');
-
   markBtn.addEventListener('click', function () {
     var currentQuestion = examState.questions[examState.currentIndex];
 
@@ -117,12 +117,68 @@ function handleExamEvents() {
 
     renderMarkedQuestionsList();
     updateMarkButton();
+    saveExamState(examState);
   });
 
   //Submit Btn
-
   var SubmitBtn = document.getElementById('submitButton');
   SubmitBtn.addEventListener('click', submitExam);
+}
+
+// submit exam
+function submitExam() {
+  if (examState.isSubmitted) {
+    return;
+  }
+
+  // var confirmSubmit = confirm('Are you sure you want to submit the exam?');
+
+  // if (!confirmSubmit) {
+  //   return;
+  // }
+
+  Swal.fire({
+    title: 'Are you sure you want to submit the exam?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Submit',
+    denyButtonText: `Return to Exam`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire('Saved!', '', 'success');
+
+      setTimeout(function () {
+        examState.isSubmitted = true;
+        stopExamTimer();
+        examState.score = calcScore();
+        //
+        sessionStorage.setItem('examStarted', 'false');
+        saveLastExamResult(examState.score);
+        clearExamState();
+        window.location.href = ROUTES.RESULT;
+      },1500);
+      
+    } else if (result.isDenied) {
+      return;
+    }
+  });
+}
+
+///Handle Exam TIME OUT
+function handleExamTimeOut() {
+  if (examState.isSubmitted) {
+    return;
+  }
+
+  examState.isSubmitted = true;
+  stopExamTimer();
+  examState.score = calcScore();
+  sessionStorage.setItem('examStarted', 'false');
+
+  saveLastExamResult(examState.score);
+  clearExamState();
+
+  window.location.href = ROUTES.RESULT;
 }
 
 ///calcualte score

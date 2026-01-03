@@ -5,11 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../src/output.css" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    <title>Login</title>
-  </head>
-  <body></body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <link rel="stylesheet" href="css/tailwind.css" /> -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <title>SkillCheck | Login</title>
+  <!-- styles -->
+  <link rel="stylesheet" href="/CSS/login.css">
+  <link rel="stylesheet" href="/CSS/animatedbg.css">
+  <!-- scripts -->
+  <script src="../JS/constants.js"></script>
+  <script src="../JS/storage.js"></script>
+  <script src="../JS/utils.js"></script>
+  <script src="../JS/login.js" defer></script>
+  <script>
+    if (isLoggedIn()) {
+      openHome("../index.html")
+    }
+  </script>
+</head>
+
+<body>
+  <div class="login-formcard">
+    <div class="login-formlogo" onclick="openHome('../index.html')"><img src="/assets/homepage/logo.png" alt="logo">
+    </div>
+
+    <div class="login-formtitle">Welcome back</div>
+
+    <div class="login-formpara">sign in to access your examination portal</div>
+
+    <form class="login-form-card-inputs" onsubmit="submitLoginForm(event)">
+      <label for="login-email">Email Address</label>
+      <input onblur="validateLoginEmail()" type="email" name="user-email" id="login-email" placeholder="student@example.com" required>
+      <p class="emailErrorMsg" id="login-email-msg"></p>
+
+      <label for="login-password">Password</label>
+      <input onblur="validateLoginPassword()" type="password" name="user-password" id="login-password" placeholder="Enter your password">
+      <p class="passwordErrorMsg" id="login-password-msg"></p>
+      <p class="loginFormMsg" id="loginFormMsg">Invalid Login Data, check your Email or Password</p>
+      <button>Sign in</button>
+      <div class="donothaveaccount">don't have an account? <a href="/HTML/signUp.html">Register</a></div>
+    </form>
+  </div>
+</body>
+
 </html>

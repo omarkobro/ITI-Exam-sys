@@ -33,10 +33,18 @@ function isLoggedIn() {
 
 function logout() {
   localStorage.removeItem(STORAGE_KEYS.IS_LOGGED_IN);
+  location.reload();
+}
+
+function completeRegistration(user) {
+  saveUser(user);
+  setRegistered();
+  localStorage.setItem(STORAGE_KEYS.IS_LOGGED_IN, 'false');
 }
 
 //save exam state
 function saveExamState(examState) {
+  
   localStorage.setItem(STORAGE_KEYS.EXAM_STATE, JSON.stringify(examState));
 }
 
@@ -48,7 +56,6 @@ function getExamState() {
 function clearExamState() {
   localStorage.removeItem(STORAGE_KEYS.EXAM_STATE);
 }
-
 
 //save last exam result
 function saveLastExamResult(score) {
