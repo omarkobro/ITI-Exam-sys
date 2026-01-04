@@ -8,9 +8,103 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
-    <title>Home</title>
+    <link rel="stylesheet" href="/CSS/homepage.css" />
+    <link rel="stylesheet" href="/CSS/animatedbg.css" />
+    <link rel="stylesheet" href="/CSS/navbar.css" />
+    <link rel="stylesheet" href="/CSS/LotttieAnimation.css" />
+    <title>SkillCheck | Home</title>
+    <script src="JS/constants.js"></script>
+    <script src="JS/storage.js"></script>
+    <script src="JS/auth.js"></script>
+    <script src="JS/utils.js"></script>
+
+    <script>
+      if (sessionStorage.getItem('examStarted') == 'true') {
+        window.location.replace('/HTML/exam.html');
+      }
+    </script>
   </head>
+
   <body>
-    
+    <div id="page-loader">
+      <lottie-player
+        src="/assets/loading.json"
+        background="transparent"
+        speed="1"
+        loop
+        autoplay
+      >
+      </lottie-player>
+    </div>
+    <nav>
+      <div class="homepage-logo">
+        <img src="/assets/homepage/logo.png" alt="logo" />
+      </div>
+    </nav>
+    <header class="homepage-header">
+      <div class="homepage-header-content">
+        <div class="system-online">
+          <div class="greendot"></div>
+          SYSTEM ONLINE
+        </div>
+        <div class="homepage-header-title">
+          Master your <span>Examinations.</span>
+        </div>
+        <div class="homepage-header-para">
+          A seamless, secure, and intelligent platform designed for the modern
+          assessment experience. Simplicity meets performance.
+        </div>
+
+        <div id="welcome-user"></div>
+
+        <div class="homepage-header-buttons">
+          <div id="loginButton" class="loginButton" onclick="openLogin()">
+            Login
+          </div>
+          <div
+            id="RegisterButton"
+            class="RegisterButton"
+            onclick="openRegister()"
+          >
+            Register
+          </div>
+        </div>
+        <div class="homepage-header-buttons">
+          <div
+            id="StartExamButton"
+            class="StartExamButton"
+            onclick="openExamPreview()"
+          >
+            Start Exam
+          </div>
+          <div id="logoutButton" class="logoutButton" onclick="logout()">
+            Log Out
+          </div>
+        </div>
+        <div class="homepage-header-small-cards">
+          <div class="small-card-icons">
+            <i class="fa-solid fa-shield"></i>
+            <div class="small-icons-text">Secure</div>
+          </div>
+
+          <div class="small-card-icons">
+            <i class="fa-solid fa-gauge-simple-high"></i>
+            <div class="small-icons-text">Fast</div>
+          </div>
+          <div class="small-card-icons">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <div class="small-icons-text">Mobile</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <footer>
+      <p>&copy; Examination System Project, All right reserved</p>
+    </footer>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="JS/lottieAnimation.js"></script>
+    <script>
+      manageHomepageItemVisibility();
+    </script>
   </body>
 </html>

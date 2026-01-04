@@ -3,13 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/tailwind.css" />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
-    <title>Instructions</title>
+    <title>SkillCheck | Exam Instructions</title>
+    <!-- style files -->
+    <link rel="stylesheet" href="/CSS/navbar.css" />
+    <link rel="stylesheet" href="/CSS/animatedbg.css" />
+    <link rel="stylesheet" href="/CSS/examInstructions.css" />
+    <!-- script files -->
+    <script src="/JS/constants.js"></script>
+    <script src="/JS/storage.js"></script>
+    <script src="/JS/utils.js"></script>
+    <script>
+      if (!isLoggedIn()) {
+        openHome('../index.html');
+      }
+      console.log(sessionStorage.getItem('examStarted'));
+      
+      if (sessionStorage.getItem('examStarted') == 'true') {
+        window.location.replace('exam.html');
+      }
+    </script>
   </head>
-  <body></body>
+
+  <body>
+    <nav>
+      <div class="homepage-logo" onclick="openHome('../index.html')">
+        <img src="/assets/homepage/logo.png" alt="logo" />
+      </div>
+      <div id="navbar-username"></div>
+    </nav>
+    <div class="instructionsBody">
+      <div class="instructions-header-title">Web Devlopment Exam</div>
+      <div class="instructions-header-para">
+        Please read the instructions carefully before starting. This exam will
+        test your understanding of complex sentence structures and vocabulary.
+      </div>
+
+      <div class="instructions-body-card">
+        <h3>Exam Guidelines</h3>
+        <div class="instructiongrid">
+          <div>
+            <h4>
+              <span><i class="fa-regular fa-clock"></i></span> Duration
+            </h4>
+            <p>
+              You have exactly 10 minutes to complete the exam once you start.
+            </p>
+          </div>
+          <div>
+            <h4>
+              <span><i class="fa-regular fa-file-lines"></i></span> Questions
+            </h4>
+            <p>This exam consists of 20 multiple-choice questions.</p>
+          </div>
+          <div>
+            <h4>
+              <span><i class="fa-regular fa-floppy-disk"></i></span> Auto-Save
+            </h4>
+            <p>Your progress is saved automatically after each question.</p>
+          </div>
+          <div>
+            <h4>
+              <span><i class="fa-solid fa-list-check"></i></span>Marking
+            </h4>
+            <p>
+              You can mark questions to review them later before submitting.
+            </p>
+          </div>
+        </div>
+        <div id="StartExamButton" class="StartExamButton">
+          Start Exam now <i class="fa-solid fa-angles-right"></i>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; Examination System Project, All right reserved</p>
+    </footer>
+    <script src="/JS/examInstructions.js"></script>
+  </body>
 </html>

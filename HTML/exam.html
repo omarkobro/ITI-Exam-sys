@@ -3,13 +3,258 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/tailwind.css" />
-
+    <title>Exam Project</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.17/dist/sweetalert2.all.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.17/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../src/output.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <title>Exam</title>
   </head>
-  <body></body>
+  <body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Main Container -->
+    <div class="w-full flex-1 flex flex-col">
+      <!-- Header -->
+      <div class="bg-white border-b border-gray-200 px-4 py-3 md:px-8">
+        <div class="flex justify-between items-center">
+          <div>
+            <h1 class="text-sm md:text-base font-semibold text-gray-700">
+              Web Devlopment Exam
+            </h1>
+          </div>
+          <div class="flex items-center gap-2 text-orange-500">
+            <i class="fas fa-clock text-xl"></i>
+            <span id="timer-display" class="font-semibold text-sm md:text-base"
+              >45:20 remaining</span
+            >
+          </div>
+        </div>
+        <div class="w-full h-2 bg-orange-100 rounded-2xl mt-2">
+          <div
+            id="progress-bar-fill"
+            class="h-2 bg-orange-500 rounded-2xl transition-all duration-300"
+            style="width: 0%"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="flex-1 flex flex-col lg:flex-row gap-4 p-4 md:p-8">
+        <!-- Main Question Area -->
+        <div class="flex-1 bg-white rounded-lg shadow-sm p-6 md:p-8">
+          <!-- Question Number -->
+          <div class="mb-6">
+            <span
+              id="question-number"
+              class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
+            >
+              Question 5 of 20
+            </span>
+          </div>
+
+          <!-- Question Text -->
+          <div id="question-container" class="mb-8">
+            <p
+              id="question-body"
+              class="text-lg md:text-xl text-gray-800 leading-relaxed"
+            >
+              in trying to solve this problem. It's clearly unsolvable.
+            </p>
+          </div>
+
+          <!-- Answers -->
+          <div id="answers-container" class="mb-12">
+            <label
+              class="flex items-center p-4 my-2 border-2 border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition"
+            >
+              <input
+                type="radio"
+                name="answer"
+                class="w-5 h-5 text-orange-500"
+              />
+              <span class="answer-span ml-3 text-gray-700"
+                >There's no point</span
+              >
+            </label>
+
+            <label
+              class="flex items-center p-4 my-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition"
+            >
+              <input
+                type="radio"
+                name="answer"
+                class="w-5 h-5 text-orange-500"
+              />
+              <span class="answer-span ml-3 text-gray-700">It's no point</span>
+            </label>
+
+            <label
+              class="flex items-center p-4 my-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition"
+            >
+              <input
+                type="radio"
+                name="answer"
+                class="w-5 h-5 text-orange-500"
+              />
+              <span class="answer-span ml-3 text-gray-700"
+                >There isn't point</span
+              >
+            </label>
+
+            <label
+              class="flex items-center p-4 my-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition"
+            >
+              <input
+                type="radio"
+                name="answer"
+                class="w-5 h-5 text-orange-500"
+              />
+              <span class="answer-span ml-3 text-gray-700">It's no need</span>
+            </label>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div
+            class="flex flex-col gap-4 md:flex-row md:gap-0 items-center justify-between"
+          >
+            <button
+              id="prev-btn"
+              class="flex items-center cursor-pointer gap-2 px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50"
+            >
+              <i class="fas fa-chevron-left"></i>
+              Previous
+            </button>
+
+            <div id="pagination-container" class="flex items-center gap-2">
+              <!-- <button
+                class="w-10 cursor-pointer h-10 rounded-lg border border-gray-300 hover:bg-gray-50"
+              >
+                1
+              </button>
+              <button
+                class="w-10 cursor-pointer h-10 rounded-lg border border-gray-300 hover:bg-gray-50"
+              >
+                2
+              </button>
+              <button
+                class="w-10 cursor-pointer h-10 rounded-lg border border-gray-300 hover:bg-gray-50"
+              >
+                3
+              </button>
+              <button
+                class="w-10 cursor-pointer h-10 rounded-lg border border-gray-300 hover:bg-gray-50"
+              >
+                4
+              </button>
+              <button
+                class="w-10 cursor-pointer h-10 rounded-lg bg-blue-500 text-white"
+              >
+                5
+              </button>
+              <button
+                class="w-10 cursor-pointer h-10 rounded-lg border border-gray-300 hover:bg-gray-50"
+              >
+                6
+              </button> -->
+            </div>
+
+            <button
+              id="next-btn"
+              class="flex items-center gap-2 px-4 py-2 text-gray-600 cursor-pointer border border-gray-300 rounded-lg hover:bg-gray-50"
+            >
+              Next
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <!-- Mark for Review Button -->
+          <div class="mt-6 flex justify-end">
+            <button
+              id="mark-btn"
+              class="flex items-center gap-2 px-6 py-3 bg-orange-100 text-orange-600 rounded-lg font-medium hover:bg-orange-200 transition cursor-pointer"
+            >
+              <i class="fas fa-bookmark"></i>
+              <span>Mark for Review</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sidebar - Marked Questions -->
+        <div class="lg:w-80">
+          <div
+            class="bg-yellow-50 rounded-lg border-2 border-yellow-200 p-5 min-h-[700px] max-h-[700px] overflow-y-auto"
+          >
+            <!-- Sidebar Header -->
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-bookmark text-orange-500 text-lg"></i>
+                <h2 class="font-semibold text-gray-800">Marked Questions</h2>
+              </div>
+              <span id="total-markedQuestion" class="text-sm text-gray-600"
+                >0 Total</span
+              >
+            </div>
+
+            <!-- Marked Question Items -->
+            <div id="marked-list-container"></div>
+            <!-- Tempalte for mark for review  -->
+            <div
+              id="marked-item-template"
+              class="bg-white rounded-lg p-4 my-3 border border-orange-200 cursor-pointer"
+              style="display: none"
+            >
+              <div class="flex items-start gap-3">
+                <div
+                  id="marked-list-question-number"
+                  class="bg-orange-100 text-orange-600 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 font-semibold text-sm"
+                >
+                  2
+                </div>
+                <div class="flex-1">
+                  <h3
+                    id="marked-list-question-text"
+                    class="font-semibold text-gray-800 text-sm mb-1"
+                  >
+                    Grammar: Past Tense
+                  </h3>
+                  <p class="text-xs text-orange-600">Flagged for review</p>
+                </div>
+              </div>
+            </div>
+            <!-- Reminder Text -->
+            <div class="mt-4 text-center">
+              <p class="text-xs text-gray-600">
+                Make sure to review all flagged questions before submitting
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="px-4 pb-4 md:px-8 md:pb-8">
+        <button
+          id="submitButton"
+          class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-4 rounded-lg flex items-center justify-center gap-2 transition shadow-lg cursor-pointer"
+        >
+          SUBMIT EXAM
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <script src="../JS/constants.js"></script>
+    <script src="../JS/utils.js"></script>
+    <script src="../JS/examTimer.js"></script>
+    <script src="../JS/storage.js"></script>
+    <script src="../JS/questions.js"></script>
+    <script src="../JS/examState.js"></script>
+    <script src="../JS/exam-UI.js"></script>
+    <script src="../JS/examController.js"></script>
+  </body>
 </html>
