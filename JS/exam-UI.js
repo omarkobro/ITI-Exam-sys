@@ -123,7 +123,8 @@ function updateMarkButton() {
 function renderMarkedQuestionsList() {
   var container = document.getElementById('marked-list-container');
   var template = document.getElementById('marked-item-template');
-
+  var totalMarkedQuestion = document.getElementById('total-markedQuestion');
+  totalMarkedQuestion.innerText = examState.marked.length;
   container.innerHTML = '';
 
   for (var i = 0; i < examState.marked.length; i++) {
@@ -135,6 +136,7 @@ function renderMarkedQuestionsList() {
     for (var j = 0; j < examState.questions.length; j++) {
       if (examState.questions[j].id == questionId) {
         question = examState.questions[j];
+
         questionIdx = j;
         break;
       }
@@ -147,6 +149,7 @@ function renderMarkedQuestionsList() {
     var item = template.cloneNode(true);
     item.style.display = 'block';
     item.removeAttribute('id');
+    item.setAttribute('data-qNum', questionIdx);
 
     var markedListQuestionNumber = item.querySelector(
       '#marked-list-question-number'
@@ -158,13 +161,14 @@ function renderMarkedQuestionsList() {
 
     markedListQuestionNumber.textContent = questionIdx + 1;
     markedListQuestionText.textContent = question.text;
+    console.log(examState.marked.length);
 
     //navigate to the marked question
     item.addEventListener('click', function () {
-      examState.currentIndex = questionIdx;
+      var index = parseInt(this.getAttribute('data-qNum'));
 
-      renderQuestion(question);
-      renderAnswers(question);
+      examState.currentIndex = index;
+      renderCurrentQuestion();
     });
 
     container.appendChild(item);
@@ -185,7 +189,6 @@ function updatePagination() {
     createPageButton(i, current, container);
   }
 
-  // dots + last question
   if (total > maxVisible) {
     var dots = document.createElement('span');
     dots.textContent = '...';

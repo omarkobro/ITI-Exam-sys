@@ -18,7 +18,7 @@ function initExamState(shuffledQuesstions) {
   examState.isSubmitted = false;
   examState.score = 0;
   examState.startTime = null;
-  return examState
+  return examState;
 }
 
 // get the currrent question index

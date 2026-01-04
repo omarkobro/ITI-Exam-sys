@@ -7,7 +7,6 @@ window.onload = function () {
   } else {
     startNewExam();
   }
-  // initExam();
 };
 
 function startNewExam() {
@@ -156,8 +155,7 @@ function submitExam() {
         saveLastExamResult(examState.score);
         clearExamState();
         window.location.href = ROUTES.RESULT;
-      },1500);
-      
+      }, 1000);
     } else if (result.isDenied) {
       return;
     }

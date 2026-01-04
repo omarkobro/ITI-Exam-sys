@@ -4,6 +4,9 @@
 function renderResultPage() {
   var result = getLastResult();
 
+  var user = getUser();
+  console.log(user);
+
   if (!result) {
     window.location.href = ROUTES.INSTRUCTIONS;
     return;
@@ -11,7 +14,7 @@ function renderResultPage() {
 
   var nameElement = document.getElementById('userName');
   if (nameElement) {
-    nameElement.textContent = result.name;
+    nameElement.textContent = user.firstName + ' ' + user.lastName;
   }
 
   var mainScore = document.getElementById('mainScore');
@@ -72,7 +75,6 @@ function renderResultPage() {
     result.timeTaken +
     ' <span class="text-xl font-normal text-gray-500">min</span>';
 
-
   var doneBtn = document.getElementById('doneBtn');
   doneBtn.addEventListener('click', function () {
     window.location.href = ROUTES.INDEX; // Or wherever "home" is
@@ -83,5 +85,4 @@ function renderResultPage() {
   examDate.textContent = 'Completed on ' + result.date;
 }
 
-
-  renderResultPage();
+renderResultPage();
