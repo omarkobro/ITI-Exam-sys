@@ -252,6 +252,11 @@
     <script src="../JS/utils.js"></script>
     <script src="../JS/examTimer.js"></script>
     <script src="../JS/storage.js"></script>
+    <script>
+      if (!isLoggedIn()) {
+        window.location.replace(ROUTES.INDEX);
+      }
+    </script>
     <script src="../JS/questions.js"></script>
     <script src="../JS/examState.js"></script>
     <script src="../JS/exam-UI.js"></script>

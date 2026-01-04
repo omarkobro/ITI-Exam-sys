@@ -21,11 +21,18 @@ var EXAM_CONFIG = {
    UI / Navigation
    ============================== */
 
-var ROUTES = {
-  INDEX: '../index.html',
-  SIGNUP: '/HTML/signUp.html',
-  LOGIN: '/HTML/login.html',
-  INSTRUCTIONS: '/HTML/examInstruction.html',
-  EXAM: 'exam.html',
-  RESULT: 'result.html',
+// GitHub Pages–safe base path
+const REPO_NAME = 'ITI-Exam-sys';
+
+const BASE_PATH = window.location.hostname.includes('github.io')
+  ? `/${REPO_NAME}`
+  : '';
+
+const ROUTES = {
+  INDEX: `${BASE_PATH}/index.html`,
+  LOGIN: `${BASE_PATH}/HTML/login.html`,
+  SIGNUP: `${BASE_PATH}/HTML/signUp.html`,
+  INSTRUCTIONS: `${BASE_PATH}/HTML/examInstruction.html`,
+  EXAM: `${BASE_PATH}/HTML/exam.html`,
+  RESULT: `${BASE_PATH}/HTML/result.html`,
 };
