@@ -1,7 +1,11 @@
-// window.onload = function () {
-// };
-
 function renderResultPage() {
+  var examState = getExamState();
+
+  if (examState && !examState.isSubmitted) {
+    window.location.href = ROUTES.EXAM;
+    return;
+  }
+
   var result = getLastResult();
 
   var user = getUser();
