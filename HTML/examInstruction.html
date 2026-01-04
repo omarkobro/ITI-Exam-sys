@@ -18,7 +18,7 @@
     <script src="../JS/utils.js"></script>
     <script>
       if (!isLoggedIn()) {
-        openHome('../index.html');
+        openHome(ROUTES.INDEX);
       }
       console.log(sessionStorage.getItem('examStarted'));
 
@@ -30,7 +30,7 @@
 
   <body>
     <nav>
-      <div class="homepage-logo" onclick="openHome('../index.html')">
+      <div class="homepage-logo" onclick="openHome(ROUTES.INDEX)">
         <img src="../assets/homepage/logo.png" alt="logo" />
       </div>
       <div id="navbar-username"></div>
