@@ -3,24 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/tailwind.css" />
+    <link rel="stylesheet" href="./CSS/tailwind.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="CSS/homepage.css" />
-    <link rel="stylesheet" href="CSS/animatedbg.css" />
-    <link rel="stylesheet" href="CSS/navbar.css" />
-    <link rel="stylesheet" href="CSS/LotttieAnimation.css" />
+    <link rel="stylesheet" href="./CSS/homepage.css" />
+    <link rel="stylesheet" href="./CSS/animatedbg.css" />
+    <link rel="stylesheet" href="./CSS/navbar.css" />
+    <link rel="stylesheet" href="./CSS/LotttieAnimation.css" />
     <title>SkillCheck | Home</title>
-    <script src="JS/constants.js"></script>
-    <script src="JS/storage.js"></script>
-    <script src="JS/auth.js"></script>
-    <script src="JS/utils.js"></script>
+    <script src="./JS/constants.js"></script>
+    <script src="./JS/storage.js"></script>
+    <script src="./JS/auth.js"></script>
+    <script src="./JS/utils.js"></script>
 
     <script>
       if (sessionStorage.getItem('examStarted') == 'true') {
-        window.location.replace('/HTML/exam.html');
+        window.location.replace('./HTML/exam.html');
       }
     </script>
   </head>
@@ -28,7 +28,7 @@
   <body>
     <div id="page-loader">
       <lottie-player
-        src="/assets/loading.json"
+        src="./assets/loading.json"
         background="transparent"
         speed="1"
         loop
@@ -38,7 +38,7 @@
     </div>
     <nav>
       <div class="homepage-logo">
-        <img src="/assets/homepage/logo.png" alt="logo" />
+        <img src="./assets/homepage/logo.png" alt="logo" />
       </div>
     </nav>
     <header class="homepage-header">
@@ -102,7 +102,7 @@
       <p>&copy; Examination System Project, All right reserved</p>
     </footer>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="JS/lottieAnimation.js"></script>
+    <script src="./JS/lottieAnimation.js"></script>
     <script>
       manageHomepageItemVisibility();
     </script>

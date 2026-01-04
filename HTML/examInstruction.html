@@ -18,10 +18,10 @@
     <script src="../JS/utils.js"></script>
     <script>
       if (!isLoggedIn()) {
-        openHome('../index.html');
+        openHome(ROUTES.INDEX);
       }
       console.log(sessionStorage.getItem('examStarted'));
-      
+
       if (sessionStorage.getItem('examStarted') == 'true') {
         window.location.replace('exam.html');
       }
