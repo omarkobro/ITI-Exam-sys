@@ -31,9 +31,8 @@ const BASE_PATH = window.location.hostname.includes('github.io')
 const ROUTES = {
   INDEX: `${BASE_PATH}/index.html`,
   LOGIN: `${BASE_PATH}/HTML/login.html`,
-  SIGNUP: `${BASE_PATH}/HTML/signup.html`,
-  INSTRUCTIONS: `${BASE_PATH}/HTML/instructions.html`,
+  SIGNUP: `${BASE_PATH}/HTML/signUp.html`,
+  INSTRUCTIONS: `${BASE_PATH}/HTML/examInstruction.html`,
   EXAM: `${BASE_PATH}/HTML/exam.html`,
   RESULT: `${BASE_PATH}/HTML/result.html`,
-  TIMEOUT: `${BASE_PATH}/HTML/timeout.html`,
 };
