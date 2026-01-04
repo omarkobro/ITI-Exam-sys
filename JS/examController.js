@@ -1,5 +1,6 @@
 //auto-init exam
 window.onload = function () {
+
   var savedState = getExamState();
 
   if (savedState && !savedState.isSubmitted) {
