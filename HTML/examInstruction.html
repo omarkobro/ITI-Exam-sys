@@ -9,13 +9,13 @@
     />
     <title>SkillCheck | Exam Instructions</title>
     <!-- style files -->
-    <link rel="stylesheet" href="/CSS/navbar.css" />
-    <link rel="stylesheet" href="/CSS/animatedbg.css" />
-    <link rel="stylesheet" href="/CSS/examInstructions.css" />
+    <link rel="stylesheet" href="../CSS/navbar.css" />
+    <link rel="stylesheet" href="../CSS/animatedbg.css" />
+    <link rel="stylesheet" href="../CSS/examInstructions.css" />
     <!-- script files -->
-    <script src="/JS/constants.js"></script>
-    <script src="/JS/storage.js"></script>
-    <script src="/JS/utils.js"></script>
+    <script src="../JS/constants.js"></script>
+    <script src="../JS/storage.js"></script>
+    <script src="../JS/utils.js"></script>
     <script>
       if (!isLoggedIn()) {
         openHome('../index.html');
@@ -30,8 +30,8 @@
 
   <body>
     <nav>
-      <div class="homepage-logo" onclick="openHome('../index.html')">
-        <img src="/assets/homepage/logo.png" alt="logo" />
+      <div class="homepage-logo" onclick="openHome(ROUTES.INDEX)">
+        <img src="../assets/homepage/logo.png" alt="logo" />
       </div>
       <div id="navbar-username"></div>
     </nav>
@@ -83,6 +83,6 @@
     <footer>
       <p>&copy; Examination System Project, All right reserved</p>
     </footer>
-    <script src="/JS/examInstructions.js"></script>
+    <script src="../JS/examInstructions.js"></script>
   </body>
 </html>

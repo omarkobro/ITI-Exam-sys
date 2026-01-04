@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Roboto";
-  src: url("/assets/Roboto-VariableFont_wdth\,wght.ttf") format("truetype"); /* Path to your font file */
+  font-family: 'Roboto';
+  src: url('../assets/Roboto-VariableFont_wdth,wght.ttf') format('truetype'); /* Path to your font file */
 }
 body {
   font-family: Roboto;
@@ -252,7 +252,6 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
-
   .homepage-header-small-cards {
     gap: 10%;
   }

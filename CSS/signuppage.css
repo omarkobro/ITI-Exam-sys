@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Roboto";
-  src: url("/assets/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  font-family: 'Roboto';
+  src: url('../assets/Roboto-VariableFont_wdth,wght.ttf') format('truetype');
 }
 
 body {
@@ -8,7 +8,7 @@ body {
   margin: 0;
 }
 
-input{
+input {
   transition: 0.2s all ease;
 }
 input:focus {
